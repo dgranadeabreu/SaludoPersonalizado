@@ -8,19 +8,23 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
 
 public class SecondActivity extends Activity {
     Button btnHola;
     Button btnAdios;
+    TextView mensaje;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
         btnHola=(Button)findViewById(R.id.button);
         btnAdios=(Button)findViewById(R.id.button2);
+        mensaje=(TextView)findViewById(R.id.textView);
 
+        mensaje.setText(getIntent().getStringExtra("idNombre"));
         btnHola.setOnClickListener(new View.OnClickListener()
         {
             @Override

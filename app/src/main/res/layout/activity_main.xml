@@ -50,11 +50,29 @@
                 android:checked="true"
                 android:id="@+id/radiosra" />
         </RadioGroup>
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/radioGrupo2">
 
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hola"
+                android:id="@+id/radioHola" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Adios"
+                android:checked="true"
+                android:id="@+id/radioAdios" />
+        </RadioGroup>
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New CheckBox"
+            android:text="Muestrame un Calendario y Horario"
             android:id="@+id/checkBox" />
         <TimePicker android:id="@+id/timePicker"
             android:layout_width="wrap_content"

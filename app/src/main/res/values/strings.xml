@@ -6,6 +6,8 @@
     <string name="action_settings">Settings</string>
     <string name="radiosr">Señor</string>
     <string name="radiosra">Señora</string>
+    <string name="radioHola">Hola</string>
+    <string name="radioAdios">Adios</string>
     <string name="saludo"></string>
     <string name="entrada"></string>
     <string name="b_saludo">saludos</string>

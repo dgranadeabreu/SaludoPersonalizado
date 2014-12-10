@@ -23,8 +23,8 @@ public class MainActivity extends Activity {
     EditText texto;
     TextView n2;
     Button botonSaludo;
-    RadioButton sr,sra;
-    RadioGroup grupo;
+    RadioButton sr,sra,Hola,Adios;
+    RadioGroup grupo,grupo2;
     CheckBox box;
 
     @Override
@@ -38,7 +38,10 @@ public class MainActivity extends Activity {
         botonSaludo=(Button) findViewById(R.id.b_saludo);
         sr=(RadioButton)findViewById(R.id.radiosr);
         sra=(RadioButton)findViewById(R.id.radiosra);
+        Hola=(RadioButton)findViewById(R.id.radioHola);
+        Adios=(RadioButton)findViewById(R.id.radioAdios);
         grupo=(RadioGroup)findViewById(R.id.radioGrupo);
+        grupo2=(RadioGroup)findViewById(R.id.radioGrupo2);
         box=(CheckBox)findViewById(R.id.checkBox);
 
         //intento necesario para llamar a la segunda clase,pasarle cosas...
@@ -71,8 +74,18 @@ public class MainActivity extends Activity {
                         return;
                     }
                     String salutation = null;
+                    String saludo1=null;
                     String enteredName = texto.getText().toString();
-                    // referencia al radioButton
+
+                    //radiobuttons de Hola o Adios
+                    if (R.id.radioHola == grupo2.getCheckedRadioButtonId())
+                    {
+                        saludo1 = getResources().getString(R.string.radioHola).toLowerCase();
+                    } else
+                    {
+                        saludo1 = getResources().getString(R.string.radioAdios).toLowerCase();
+                    }
+                    // radiobuttons de sr o sra
                     if (R.id.radiosr == grupo.getCheckedRadioButtonId())
                     {
                         salutation = getResources().getString(R.string.radiosr).toLowerCase();
@@ -80,7 +93,7 @@ public class MainActivity extends Activity {
                     {
                         salutation = getResources().getString(R.string.radiosra).toLowerCase();
                     }
-                    salutation = getResources().getString(R.string.b_saludo) + " " + salutation + " " + enteredName;
+                    salutation = saludo1+ " " + salutation + " " + enteredName;
                     // obtención de la hora y fecha
                     if (box.isChecked())
                     {
@@ -88,8 +101,10 @@ public class MainActivity extends Activity {
                         String dateToShow = date.getDayOfMonth() + "/" + (date.getMonth() + 1) + "/" + date.getYear();
                         TimePicker time = (TimePicker) findViewById(R.id.timePicker);
                         dateToShow += " " + time.getCurrentHour() + ":" + time.getCurrentMinute();
-                       //salutation += " " + dateToShow;
+
                     }
+
+                    intento.putExtra("idNombre",salutation.toString());
                     startActivityForResult(intento,1);
 
                 }

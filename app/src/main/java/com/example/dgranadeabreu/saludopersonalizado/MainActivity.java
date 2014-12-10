@@ -7,16 +7,21 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 import android.widget.CompoundButton;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends Activity {
@@ -26,6 +31,8 @@ public class MainActivity extends Activity {
     RadioButton sr,sra,Hola,Adios;
     RadioGroup grupo,grupo2;
     CheckBox box;
+    Spinner spin;
+    String[]array={"Hola","Adios"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -38,11 +45,10 @@ public class MainActivity extends Activity {
         botonSaludo=(Button) findViewById(R.id.b_saludo);
         sr=(RadioButton)findViewById(R.id.radiosr);
         sra=(RadioButton)findViewById(R.id.radiosra);
-        Hola=(RadioButton)findViewById(R.id.radioHola);
-        Adios=(RadioButton)findViewById(R.id.radioAdios);
         grupo=(RadioGroup)findViewById(R.id.radioGrupo);
-        grupo2=(RadioGroup)findViewById(R.id.radioGrupo2);
         box=(CheckBox)findViewById(R.id.checkBox);
+        spin=(Spinner)findViewById(R.id.nuevoSpinner);
+
 
         //intento necesario para llamar a la segunda clase,pasarle cosas...
         //el intent sirve para cambiar de activity de una a otra
@@ -74,17 +80,9 @@ public class MainActivity extends Activity {
                         return;
                     }
                     String salutation = null;
-                    String saludo1=null;
+
                     String enteredName = texto.getText().toString();
 
-                    //radiobuttons de Hola o Adios
-                    if (R.id.radioHola == grupo2.getCheckedRadioButtonId())
-                    {
-                        saludo1 = getResources().getString(R.string.radioHola).toLowerCase();
-                    } else
-                    {
-                        saludo1 = getResources().getString(R.string.radioAdios).toLowerCase();
-                    }
                     // radiobuttons de sr o sra
                     if (R.id.radiosr == grupo.getCheckedRadioButtonId())
                     {
@@ -93,7 +91,24 @@ public class MainActivity extends Activity {
                     {
                         salutation = getResources().getString(R.string.radiosra).toLowerCase();
                     }
-                    salutation = saludo1+ " " + salutation + " " + enteredName;
+
+
+                    //VINCULAR EL SPINNER
+
+
+                    ArrayAdapter<CharSequence> adapterSpinner = ArrayAdapter.createFromResource(MainActivity.this,
+                            R.array.saludosss, android.R.layout.simple_spinner_item);
+
+                    adapterSpinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+                    spin.setAdapter(adapterSpinner);
+
+                    //para coger lo seleccionado en el spinner
+                    String aux=spin.getSelectedItem().toString();
+
+                    salutation =  aux+" " + salutation + " " + enteredName;
+
+
                     // obtención de la hora y fecha
                     if (box.isChecked())
                     {
@@ -123,6 +138,10 @@ public class MainActivity extends Activity {
                 view.setVisibility(visibility);
             }
         });
+
+    }
+    public void addListenerOnSpinnerItemSelection(){
+
 
     }
     public void showToast(String mensaje)

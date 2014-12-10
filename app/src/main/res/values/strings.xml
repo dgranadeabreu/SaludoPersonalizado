@@ -12,5 +12,9 @@
     <string name="entrada"></string>
     <string name="b_saludo">saludos</string>
     <string name="title_activity_second">SecondActivity</string>
+    <string-array name="saludosss">
+        <item>ho</item>
+        <item>Adios</item>
+    </string-array>
 
 </resources>

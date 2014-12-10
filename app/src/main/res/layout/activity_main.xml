@@ -50,25 +50,12 @@
                 android:checked="true"
                 android:id="@+id/radiosra" />
         </RadioGroup>
-        <RadioGroup
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:id="@+id/radioGrupo2">
 
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Hola"
-                android:id="@+id/radioHola" />
+        <Spinner
+            android:id="@+id/nuevoSpinner"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
 
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Adios"
-                android:checked="true"
-                android:id="@+id/radioAdios" />
-        </RadioGroup>
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
